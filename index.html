@@ -1,0 +1,97 @@
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+</head>
+
+<script type="text/javascript">
+
+
+/**
+ * Takes in amount of trials to run in a given time and returns the average time of attempts.
+ *
+ * @param trials
+ * @param time
+ * @return time of attempts
+ */
+
+function getTimes(trials,time){
+        var i;
+
+        var trialArray = [];
+        trialArray.length = trials;
+
+
+        for(i=0;i<trials;i++){
+
+                t0 = performance.now();
+                eval("t"+i+"=performance.now();");
+                //slowdown
+
+        //      var t1 = setTimeout(timesHelper(performance.now()),time);
+
+                eval("console.log( Time is: ' + setTimeout(timesHelper(t"+i+"),time));");
+
+
+          //      trialArray[i] = t1;
+
+        }
+
+
+        var sum = 0;
+        for( var i = 0; i < trialArray.length; i++ ){
+            sum += parseInt( trialArray[i], 10 );
+        }
+
+        var avg = sum/trialArray.length;
+
+        console.log( "The average of all trials is: " + avg );
+}
+
+
+function timesHelper(t0) {
+       // console.log( "Helper Test");
+
+        return performance.now()-t0;
+}
+
+
+
+
+
+
+//var timeInput = prompt("How long (in milliseconds) will this run?");
+//var trialInput = prompt("How many trials?");
+
+
+getTimes(15,2000);
+
+
+
+
+/**
+var firstTime;
+var secondTime;
+
+
+ function timeDif(first,second){
+    var result = second-first;
+    document.write(result);
+}
+
+function slowDown() {
+    var x;
+
+    if (confirm("Press a button!") == true) {
+        x = "You pressed OK!";
+    }else {
+        x = "You pressed Cancel!";
+    }
+
+}
+*/
+</script>
+
+
+
+
+

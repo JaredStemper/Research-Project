@@ -1,8 +1,3 @@
-<head>
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
-</head>
-
 <script type="text/javascript">
 
 
@@ -15,81 +10,44 @@
  */
 
 function getTimes(trials,time){
-        var i;
 
         var trialArray = [];
-        trialArray.length = trials;
+      for (var i=0;i < trials;i++){
+        trialArray[i] = 0;
+      }
+
+        console.log(`Running ${trials} trials each for ${time} ms`);
+
+        setTimeout(recursive_perf_calculator,time,time,performance.now(), trialArray,trials);
+
+        setTimeout(array_printer, trials*time + 1000 ,trialArray);
+
+}
 
 
-        for(i=0;i<trials;i++){
-
-                t0 = performance.now();
-                eval("t"+i+"=performance.now();");
-                //slowdown
-
-        //      var t1 = setTimeout(timesHelper(performance.now()),time);
-
-                eval("console.log( Time is: ' + setTimeout(timesHelper(t"+i+"),time));");
+function recursive_perf_calculator(wait, t0, time_array,index) {
+      if (index >= 0 ) {
+      time_array[index] = performance.now() - t0;
+      console.log("Iteration took: ",time_array[index]);
+      setTimeout(recursive_perf_calculator, wait,wait, performance.now(), time_array, (index - 1));
+      }
+  }
 
 
-          //      trialArray[i] = t1;
-
-        }
-
-
-        var sum = 0;
-        for( var i = 0; i < trialArray.length; i++ ){
-            sum += parseInt( trialArray[i], 10 );
-        }
-
-        var avg = sum/trialArray.length;
-
-        console.log( "The average of all trials is: " + avg );
+function array_printer(array) {
+    var sum = 0;
+    for (var i = 0 ;i < array.length; i++){
+    sum += array[i];
+  }
+  console.log("average runtime: " , sum/array.length);
 }
 
 
-function timesHelper(t0) {
-       // console.log( "Helper Test");
-
-        return performance.now()-t0;
-}
+getTimes(10,500);
 
 
-
-
-
-
-//var timeInput = prompt("How long (in milliseconds) will this run?");
-//var trialInput = prompt("How many trials?");
-
-
-getTimes(15,2000);
-
-
-
-
-/**
-var firstTime;
-var secondTime;
-
-
- function timeDif(first,second){
-    var result = second-first;
-    document.write(result);
-}
-
-function slowDown() {
-    var x;
-
-    if (confirm("Press a button!") == true) {
-        x = "You pressed OK!";
-    }else {
-        x = "You pressed Cancel!";
-    }
-
-}
-*/
 </script>
+
 
 
 

@@ -1,39 +1,30 @@
+<head>
+<meta charset="utf-8"/>
+</head>
 <script type="text/javascript">
-
-
 /**
- * Takes in amount of trials to run in a given time and returns the average time of attempts.
+ * Takes in amount of trials to run in a given time and retur$
  *
  * @param trials
  * @param time
  * @return time of attempts
  */
-
 function getTimes(trials,time){
-
         var trialArray = [];
       for (var i=0;i < trials;i++){
         trialArray[i] = 0;
       }
-
-        console.log(`Running ${trials} trials each for ${time} ms`);
-
-        setTimeout(recursive_perf_calculator,time,time,performance.now(), trialArray,trials);
-
-        setTimeout(array_printer, trials*time + 1000 ,trialArray);
-
+        console.log(`Running ${trials} trials each for ${time$
+        setTimeout(recursive_perf_calculator,time,time,perfor$
+        setTimeout(array_printer, trials*time + 1000 ,trialAr$
 }
-
-
-function recursive_perf_calculator(wait, t0, time_array,index) {
-      if (index >= 0 ) {
+function recursive_perf_calculator(wait, t0, time_array,index$
+      if (index > 0 ) {
       time_array[index] = performance.now() - t0;
       console.log("Iteration took: ",time_array[index]);
-      setTimeout(recursive_perf_calculator, wait,wait, performance.now(), time_array, (index - 1));
+      setTimeout(recursive_perf_calculator, wait,wait, perfor$
       }
   }
-
-
 function array_printer(array) {
     var sum = 0;
     for (var i = 0 ;i < array.length; i++){
@@ -41,15 +32,5 @@ function array_printer(array) {
   }
   console.log("average runtime: " , sum/array.length);
 }
-
-
-getTimes(10,500);
-
-
+getTimes(10,450);
 </script>
-
-
-
-
-
-

@@ -4,7 +4,7 @@ The goal of this research is to break a part of the [anti-fingerprinting mechani
 
 In the context of this research, a user on the native Firefox or Chrome browser loads a webpage with Javascript enabled. The Javascript runs an arbitrary calculation while tracking the time to completion. This run-time statistic can then be shared to alternate web-pages, which would run the same calculation to identify if the same computer was used to load a webpage.
 
-It is seen that the Tor Browser attempts to simplify the loading time for a page in order to help maximize the availability of identifying information. When compared directly with data from native installations of Firefox and Chrome, the time to finish the calculation varied in a randomized manner. The browser would report times of loading from 0 ms to 300 ms with no identifiable pattern.
+It is seen that the Tor Browser attempts to obscure the loading time for a page in order to help maximize the availability of identifying information. When compared directly with data from native installations of Firefox and Chrome, the time to finish the calculation varied in a randomized manner. The browser would report times of loading from 0 ms to 300 ms with no identifiable pattern.
 
 In order to break this randomization, an iterative approach was used to run a significant amount of arbitrary calculations. Although the mode of the iterations would be 0,100,200, or 300, it was possible to generate an average calculation time when given enough iterations. Given this distinct average loading time, it is possible to run the same number of arbitrary calculations on a sister site to determine if the same computer is loading a webpage.
 
